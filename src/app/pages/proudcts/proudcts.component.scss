@@ -1,0 +1,125 @@
+.proudcts-page {
+  transition: 0.5s;
+  .container {
+    h2 {
+      font-family: "Satoshi Bold", sans-serif !important;
+      font-weight: 700;
+    }
+    .right-sec {
+      h2 {
+        font-family: "Satoshi Bold", sans-serif !important;
+        // font-weight: bold;
+      }
+      .product {
+        transition: 0.5s;
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+  }
+}
+
+.dd {
+  border-radius: 50%;
+}
+
+.border-Y {
+  border-top: 1px solid #0000001a;
+  border-bottom: 1px solid #0000001a;
+}
+
+.left-sec {
+  border: 1px solid #0000001a;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.size-label {
+  padding: 15px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #00000099;
+
+  transition: 0.5s;
+
+  &:hover {
+    margin-left: 2px;
+    background-color: black;
+    color: #eee;
+  }
+
+  input:checked + &,
+  &:has(input:checked) {
+    background-color: black;
+    color: #eee;
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .right-sec {
+    .header {
+      flex-wrap: wrap;
+
+      .show-filter-icon {
+        display: none;
+      }
+    }
+    .products {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .left-sec {
+    display: none;
+  }
+  .right-sec {
+    .header {
+      display: inline-flex;
+      align-items: start;
+      gap: 5px;
+
+      .sel {
+        display: none;
+      }
+      .show-filter-icon {
+        display: inline;
+        padding: 10px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999999; // أقل من show-filter شوي
+}
+
+.show-filter {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+
+  // max-height: 100%;
+  margin-top: 250px;
+  padding: 10px;
+}
+
+.show-filter-icon {
+  display: none;
+}

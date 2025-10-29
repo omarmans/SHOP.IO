@@ -1,0 +1,54 @@
+<div class="landing bg-[#F2F0F1] mt-5">
+  <div class="container flex items-center justify-around relative">
+    <div
+      class="leftSec text-3xl basis-1/2 animate__animated animate__fadeInLeftBig"
+    >
+      <h1 class="text-6xl mb-5 mt-5">
+        FIND CLOTHES <br />
+        THAT MATCHES <br />
+        YOUR STYLE
+      </h1>
+      <p class="text-[#00000099] opacity-60 text-xl my-4">
+        Browse through our diverse range of meticulously crafted garments,
+        designed to bring out your individuality and cater to your sense of
+        style.
+      </p>
+      <button class="mt-4 bg-[#000000] text-[#FFFFFF] py-[20px] px-[70px]">
+        Shop Now
+      </button>
+      <div class="stats flex mt-4 mb-4 items-center justify-center">
+        @for (stat of stats; track stat.name) {
+        <div class="stat flex flex-col">
+          <h2 class="font-bold mb-2">{{ stat.value }}+</h2>
+          <p class="text-[#00000099] opacity-60">{{ stat.name }}</p>
+        </div>
+        }
+      </div>
+    </div>
+    <div
+      class="rightSec relative basis-1/2 animate__animated animate__fadeInRight flex justify-center items-center"
+    >
+      <img
+        src="imgs/landing/small.svg "
+        alt=""
+        class="absolute top-[50%] left-[70px] small"
+      />
+      <img src="imgs/landing/landing2.jpg" alt="" class="text-center" />
+      <img
+        src="imgs/landing/big.svg"
+        alt=""
+        class="absolute right-[25px] top-[100px] big"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="brands z-20 flex bg-black items-center p-8 justify-around relative">
+  @for (brand of brands; track brand.name) {
+  <div class="brand">
+    <a href="{{ brand.link }}" target="_blank" [name]="brand.name">
+      <img src="imgs/brands/{{ brand.logo }}" alt="" srcset="" />
+    </a>
+  </div>
+  }
+</div>

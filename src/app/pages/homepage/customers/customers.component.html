@@ -1,0 +1,43 @@
+<div class="customers mb-8 mt-8">
+  <div class="container">
+    <div class="header flex items-center justify-between">
+      <h1 class="text-4xl font-bold mb-6">OUR HAPPY CUSTOMERS</h1>
+      <div class="arrows flex items-center justify-between gap-5">
+        <img
+          src="imgs/icons/back.png"
+          alt=""
+          class="w-5"
+          (click)="backWard()"
+        />
+        <img
+          src="imgs/icons/forward.png"
+          alt=""
+          class="w-5"
+          (click)="forWard()"
+        />
+      </div>
+    </div>
+
+    <owl-carousel-o #owlCar [options]="carouselOptions">
+      <ng-container *ngFor="let customer of CUSTOMERS()">
+        <ng-template carouselSlide>
+          <div class="customer-card p-2 pt-5 shadow rounded h-40 bg-[#FFFFFF]">
+            <div class="flex items-start flex-col mb-2">
+              <div class="stars text-yellow-400 text-xl">
+                <ng-container *ngFor="let star of getStars(customer.rate)">
+                  <span *ngIf="star">&#9733;</span>
+                  <span *ngIf="!star" class="text-gray-300">&#9733;</span>
+                </ng-container>
+              </div>
+              <div class="flex items-center gap-1">
+                <h3 class="text-lg font-semibold">{{ customer.name }}</h3>
+                <img src="imgs/icons/right-icon.png" alt="" />
+              </div>
+            </div>
+            <p class="text-gray-700 text-sm">"{{ customer.comment }}"</p>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>

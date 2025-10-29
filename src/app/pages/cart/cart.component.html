@@ -1,0 +1,97 @@
+<div class="cart-section">
+  <div class="container">
+    <div class="path flex items-center gap-1 mb-7">
+      <a href="/" class="text-[#00000099] opacity-60">Home > </a>
+      <a href="/" class="text-[#00000099] opacity-60">Cart </a>
+    </div>
+    <h1 class="cart-logo font-bold text-3xl my-5">Your cart</h1>
+    <div class="carts-content flex gap-5 w-full">
+      <div
+        class="left-sec products br-one flex items-start justify-between flex-col w-[60%]"
+      >
+        @for (item of myCart(); track item.name) {
+        <div
+          class="product flex items-center justify-center gap-2 w-full mb-8 desc"
+        >
+          <div class="img">
+            <img
+              src="{{ item.img }}"
+              alt=""
+              class="w-[130px] h-[130px] rounded"
+            />
+          </div>
+          <div class="content flex-1">
+            <div class="header flex items-center justify-between mb-1">
+              <h3 class="font-bold text-2xl">{{ item.name }}</h3>
+              <img
+                src="imgs/icons/remove.png"
+                alt=""
+                class="cursor-pointer"
+                (click)="removeItem(item)"
+              />
+            </div>
+            <div class="details text-[#00000099] mb-3">
+              <p>Size:{{ item.size }}</p>
+              <p>Color:{{ item.color }}</p>
+            </div>
+            <div class="amount flex items-center justify-between mb-3">
+              <h2 class="font-bold text-2xl">${{ item.price }}</h2>
+              <div
+                class="counter flex items-center justify-between text-[#000000] p-3 text-center w-[120px] h-[40px] rounded-[62px]"
+              >
+                <button (click)="decrement()" [disabled]="quaninty() === 0">
+                  <img src="imgs/icons/mins.png" alt="" class="w-[20px]" />
+                </button>
+                <span class="text-xl">{{ quaninty() }}</span>
+
+                <button (click)="increment()">
+                  <img src="imgs/icons/plus.png" alt="" class="w-[20px]" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="right-sec br-one h-fit p-5">
+        <h1 class="font-bold text-xl my-5 fon">Order Summary</h1>
+
+        <div class="prices">
+          <div class="price">
+            <h4>Subtotal</h4>
+            <p class="text-xl">$565</p>
+          </div>
+          <div class="price">
+            <h4>Discount (-20%)</h4>
+            <p class="text-[#FF3333] text-xl">-$113</p>
+          </div>
+          <div class="price">
+            <h4>Delivery Fee</h4>
+            <p class="text-xl">$15</p>
+          </div>
+          <div class="price mt-7">
+            <h4>Total</h4>
+            <p class="text-2xl">$467</p>
+          </div>
+        </div>
+        <div class="promo flex items-center justify-between">
+          <div class="inp relative">
+            <input type="text" placeholder="Add promo code" />
+            <img src="imgs/icons/pencil.png" alt="" />
+          </div>
+          <button
+            class="w-[150px] mt-5 h-[52px] rounded-[62px] bg-black text-white hover:bg-neutral-800 transition"
+          >
+            Apply
+          </button>
+        </div>
+        <button
+          class="w-full h-[52px] rounded-[62px] bg-black text-white hover:bg-neutral-800 transition my-7 flex items-center justify-center gap-2"
+        >
+          Go to Checkout
+          <img src="imgs/icons/forward-eee.png" alt="" class="w-[14px]" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

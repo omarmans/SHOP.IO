@@ -1,0 +1,260 @@
+<div class="proudcts-page">
+  <div class="container">
+    <div class="path flex items-center gap-1 mb-7">
+      <a href="/" class="text-[#00000099] opacity-60">Home > </a>
+      <a href="/" class="text-[#00000099] opacity-60">Casual </a>
+    </div>
+    <div class="page flex gap-5">
+      <div
+        *ngIf="isFilterMenuopend"
+        class="overlay"
+        (click)="closeFilter()"
+      ></div>
+      <div
+        class="left-sec h-fit w-[310px] bg-[#FFFFFF]"
+        [class.show-filter]="isFilterMenuopend"
+      >
+        <div class="header flex items-center justify-between my-2">
+          <h2 class="text-2xl">Filters</h2>
+          <img
+            src="imgs/icons/filter.png"
+            alt=""
+            class="opacity-[.2] cursor-pointer"
+            (click)="togglefilters()"
+          />
+        </div>
+        <div
+          class="filters flex flex-col gap-2 py-5 my-5 border-Y duration-300"
+          [ngClass]="{
+            'opacity-100 max-h-[500px] py-5': isFilterOpened(),
+            'opacity-0 max-h-0 py-0': !isFilterOpened()
+          }"
+        >
+          @for (filter of filters(); track filter) {
+          <h4
+            class="flex items-center justify-between gap-5 text-[#00000099] text-xl"
+          >
+            {{ filter }} <span class="text-2xl">></span>
+          </h4>
+          }
+        </div>
+        <!-- <div class="price"></div> -->
+        <div class="colors my-5">
+          <h2 class="text-2xl flex items-center justify-between mb-4">
+            Colors
+            <img
+              src="imgs/icons/up.png"
+              alt=""
+              class="w-[15px] cursor-pointer"
+              (click)="toggleColors()"
+              [class.rotate-180]="!isColorsOpened()"
+            />
+          </h2>
+          <div
+            class="colors flex flex-wrap gap-4 border-Y py-5 duration-300"
+            [ngClass]="{
+              'opacity-100 max-h-[500px] py-5': isColorsOpened(),
+              'opacity-0 max-h-0 py-0': !isColorsOpened()
+            }"
+          >
+            @for (color of colors(); track color) {
+            <div
+              class="dd"
+              [ngStyle]="{
+                'background-color': color,
+                border: '1px solid #00000033',
+                width: '40px',
+                height: '40px'
+              }"
+            >
+              <!-- 🧠 السبب الحقيقي للمشكلة: Tailwind CSS يحذف الـ classes
+              الديناميكية اللي مش يقدر يتعرف عليها في وقت build (يعني w-[100]
+              لوحدها ما تُفهمش إلا لو انت كاتب w-[100px]). كمان لو الـ div فاضي
+              تمامًا بدون أي محتوى، أحيانًا بيكون 0x0 px حسب الـ display flow. -->
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="mt-2 pb-4">
+          <h2 class="text-2xl flex items-center justify-between mb-4">
+            Size
+            <img
+              src="imgs/icons/up.png"
+              alt=""
+              class="w-[15px] cursor-pointer"
+              (click)="toggleSizes()"
+              [class.rotate-180]="!isSizesOpened()"
+            />
+          </h2>
+          <div
+            class="flex gap-3 items-center flex-wrap duration-300"
+            [ngClass]="{
+              'opacity-100 max-h-[500px] py-5': isSizesOpened(),
+              'opacity-0 max-h-0 py-0': !isSizesOpened()
+            }"
+          >
+            @for (size of sizes(); track $index) {
+            <label class="size-label">
+              <input type="checkbox" [value]="size" hidden />
+              {{ size }}
+            </label>
+            }
+          </div>
+        </div>
+        <div class="mt-2 pb-4">
+          <h2 class="text-2xl flex items-center justify-between mb-4">
+            Dress Style
+            <img
+              src="imgs/icons/up.png"
+              alt=""
+              class="w-[15px] cursor-pointer"
+              (click)="toggleStyle()"
+              [class.rotate-180]="!isDressOpened()"
+            />
+          </h2>
+          @for (filter of DressStyle(); track filter) {
+          <h4
+            class="flex items-center justify-between gap-5 text-[#00000099] text-xl"
+            [ngClass]="{
+              'opacity-100 max-h-[500px] py-5': isDressOpened(),
+              'opacity-0 max-h-0 py-0': !isDressOpened()
+            }"
+          >
+            {{ filter }} <span class="text-2xl">></span>
+          </h4>
+          }
+        </div>
+        <button
+          (click)="(isFilterMenuopend === true)"
+          class="w-full mt-5 h-[52px] rounded-[62px] bg-black text-white hover:bg-neutral-800 transition"
+        >
+          Apply filter
+        </button>
+      </div>
+
+      <div class="right-sec basis-full">
+        <div class="header flex items-center justify-between">
+          <h2 class="text-2xl">Casual</h2>
+          <div class="text-[#00000099]">
+            Showing 1-10 of {{ products().length }} Products Sort by:
+            <div class="relative inline-block text-left w-[160px] sel">
+              <button
+                (click)="isOpen = !isOpen"
+                class="flex items-center w-full h-[48px] px-5 rounded-full text-sm text-black font-medium focus:outline-none choses"
+              >
+                <span class="truncate">{{ selectedOption }}</span>
+                <svg
+                  class="w-4 h-4 text-gray-600 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div
+                *ngIf="isOpen"
+                class="absolute z-50 mt-2 w-full rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+              >
+                <ul class="py-1 text-sm text-gray-700">
+                  <li
+                    class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    (click)="selectOption('Latest')"
+                  >
+                    Latest
+                  </li>
+                  <li
+                    class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    (click)="selectOption('Popular')"
+                  >
+                    Popular
+                  </li>
+                  <li
+                    class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    (click)="selectOption('Price: Low to High')"
+                  >
+                    Price: Low to High
+                  </li>
+                  <li
+                    class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    (click)="selectOption('Price: High to Low')"
+                  >
+                    Price: High to Low
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img
+              src="imgs/icons/filter.png"
+              alt=""
+              class="show-filter-icon mr-1"
+              (click)="toggleInSmallScreen()"
+            />
+          </div>
+        </div>
+
+        <div
+          class="products flex flex-wrap gap-5 items-center justify-between mt-2"
+        >
+          @for (product of pagedProducts; track product.id) {
+
+          <div class="product flex flex-col cursor-pointer">
+            <img
+              [src]="product.img"
+              alt="{{ product.name }}"
+              class="w-[350px] h-[350px] object-cover rounded-[20px] mb-6"
+            />
+            <h2 class="pro-name mb-4 text-2xl">{{ product.name }}</h2>
+
+            <div class="text-xl flex items-center gap-2">
+              <div class="flex items-center gap-1 text-yellow-500">
+                <ng-container *ngFor="let star of getStars(product.rate)">
+                  <ng-container [ngSwitch]="star">
+                    <i *ngSwitchCase="'full'" class="fas fa-star"></i>
+                    <i *ngSwitchCase="'half'" class="fas fa-star-half-alt"></i>
+                    <i *ngSwitchCase="'empty'" class="far fa-star"></i>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <span>
+                {{ product.rate }}/
+                <span class="text-[#00000099] opacity-60">5</span>
+              </span>
+            </div>
+
+            <div class="text-xl flex gap-5 items-center mt-5">
+              <p class="font-bold text-2xl">${{ product.price }}</p>
+              <p
+                *ngIf="product.mainPrice"
+                class="line-through text-[#00000066] opacity-60 font-bold text-2xl"
+              >
+                ${{ product.mainPrice }}
+              </p>
+              <p
+                *ngIf="product.discountPricePrecntge"
+                class="bg-[#FF33331A] text-[#FF3333] p-2 rounded-md"
+              >
+                {{ product.discountPricePrecntge }} %
+              </p>
+            </div>
+          </div>
+          }
+        </div>
+
+        <app-pagination
+          [totalItems]="products().length"
+          [pageSize]="pageSize"
+          [currentPage]="currentPage"
+          (pageChange)="onPageChange($event)"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+.desc {
+  border-bottom: 1px solid #0000001a;
+}
+
+.title {
+  font-family: "Integral CF Bold Oblique", sans-serif !important;
+}
+
+.size-label {
+  padding: 15px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #00000099;
+
+  transition: 0.5s;
+
+  &:hover {
+    margin-left: 2px;
+    background-color: black;
+    color: #eee;
+  }
+
+  input:checked + &,
+  &:has(input:checked) {
+    background-color: black;
+    color: #eee;
+    margin-left: 5px;
+  }
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+.links {
+  li {
+    width: calc(100% / 3);
+    border-bottom: 1px solid #00000099;
+    opacity: 0.5;
+    color: #00000099;
+    font-weight: 500;
+
+    // لاحظ ياعمر نقطة الاكتف لنك
+    &.router-link-active {
+      opacity: 1 !important;
+      border-bottom: 2px solid black;
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 1290px) {
+  .product {
+    .container {
+      .product-details {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        .left-sec {
+          margin: auto;
+          .product-imgs {
+            flex-wrap: wrap;
+            .small-pic {
+              flex-basis: 100%;
+              flex-direction: row;
+              // gap: 12px;
+              align-items: center;
+              justify-content: space-evenly;
+            }
+            .big-pic {
+              order: -1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .product {
+    .container {
+      .product-details {
+        width: 100%;
+        overflow: hidden;
+        .left-sec {
+          .product-imgs {
+            .small-pic {
+              align-items: center;
+              justify-content: center;
+              flex-wrap: wrap;
+              div {
+                width: 100px;
+              }
+            }
+            .big-pic {
+              img {
+                margin: auto;
+                // width: 50%;
+                width: 300px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

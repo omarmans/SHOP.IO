@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@font-face {
+  font-family: "Integral CF Regular";
+  src: url("/Fonts/Integral-CF/Fontspring-DEMO-integralcf-regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Integral CF Bold";
+  src: url("/Fonts/Integral-CF/Fontspring-DEMO-integralcf-bold.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Integral CF Bold Oblique";
+  src: url("/Fonts/Integral-CF/Fontspring-DEMO-integralcf-bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "Integral CF Heavy";
+  src: url("/Fonts/Integral-CF/Fontspring-DEMO-integralcf-heavy.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+// تعريف عائلة الخط Satoshi
+// @font-face {
+//   font-family: "Satoshi Black";
+//   src: url("/Fonts/satoshi/Satoshi-Black.otf") format("opentype");
+//   font-weight: 900; // Black
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Satoshi Black Italic";
+//   src: url("/Fonts/satoshi/Satoshi-BlackItalic.otf") format("opentype");
+//   font-weight: 900; // Black
+//   font-style: italic;
+// }
+
+// @font-face {
+//   font-family: "Satoshi Bold";
+//   src: url("/Fonts/satoshi/Satoshi-Bold.otf") format("opentype");
+//   font-weight: 700; // Bold
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Satoshi Bold Italic";
+//   src: url("/Fonts/satoshi/Satoshi-BoldItalic.otf") format("opentype");
+//   font-weight: 700; // Bold
+//   font-style: italic;
+// }
+
+// // النسخة العادية (Regular)
+// @font-face {
+//   font-family: "Satoshi Regular";
+
+//   src: url("/Fonts/satoshi/Satoshi-Regular.otf") format("opentype");
+//   // src: url("/Fonts/satoshi/Satoshi-Regular.otf") format("opentype");
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// // النسخة المائلة (Italic)
+// @font-face {
+//   font-family: "Satoshi Italic";
+//   src: url("/Fonts/satoshi/Satoshi-Italic.otf") format("opentype");
+//   font-weight: 400;
+//   font-style: italic;
+// }
+
+// أضف باقي الأوزان والأنماط حسب الحاجة (Medium, Light, etc.)
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.br-bottom {
+  border-bottom: 1px solid #eee;
+}
+
+.rad {
+  border-radius: 50px;
+}
+
+.desc {
+  border-bottom: 1px solid #0000001a;
+}
+
+.path {
+  a {
+    transition: 0.5s;
+    &:hover {
+      margin-left: 5px;
+    }
+  }
+}
+
+// .rotate-180 {
+//   transform: translateY(-180px);
+// }

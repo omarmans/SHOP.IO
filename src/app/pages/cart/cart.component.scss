@@ -1,0 +1,99 @@
+.cart-section {
+  .container {
+    .cart-logo {
+      font-family: "Integral CF Bold Oblique", sans-serif !important;
+    }
+
+    .products {
+      .product {
+        // display: flex;
+        // padding: 10px;
+        // gap: 10px;
+      }
+    }
+    .right-sec {
+      width: 30%;
+      .price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        h4 {
+          color: #00000099;
+        }
+        p {
+          font-weight: bold;
+        }
+      }
+      .promo {
+        .inp {
+          width: 100%;
+          max-width: 300px;
+          input {
+            width: 100%;
+            padding: 10px 12px 10px 40px;
+
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+          }
+          img {
+            position: absolute;
+            top: 50%;
+            left: 12px; /* لو عايزها على الشمال بدلها بـ left */
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            opacity: 0.6;
+            // margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.br-one {
+  border: 1px solid #0000001a;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.fon {
+  font-family: "Satoshi Bold", sans-serif !important;
+  font-weight: 700;
+}
+
+@media (max-width: 1300px) {
+  .cart-section {
+    .container {
+      .cart-logo {
+        text-align: center;
+      }
+      .carts-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .left-sec,
+        .right-sec {
+          width: 100%;
+        }
+        .products {
+          .product {
+            align-items: start;
+            .content {
+              .header {
+                align-items: start;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.desc:last-child {
+  border: none;
+}

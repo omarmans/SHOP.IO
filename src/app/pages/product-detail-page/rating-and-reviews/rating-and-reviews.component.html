@@ -1,0 +1,123 @@
+<div class="reviews-content mt-4 relative">
+  <div class="header flex items-center justify-between">
+    <h1 class="font-bold text-[#000000]">
+      All Reviews ({{ CUSTOMERS().length }})
+    </h1>
+    <div class="filters flex items-center gap-5">
+      <button class="bg-#F0F0F0 p-5 rounded-[20px]">
+        <img src="imgs/icons/filter.png" alt="" />
+      </button>
+      <div class="relative inline-block text-left w-[160px]">
+        <button
+          (click)="isOpen = !isOpen"
+          class="flex items-center justify-between w-full h-[48px] px-5 bg-[#F0F0F0] rounded-full text-sm text-black font-medium focus:outline-none choses"
+        >
+          <span class="truncate">{{ selectedOption }}</span>
+          <svg
+            class="w-4 h-4 text-gray-600 ml-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        <div
+          *ngIf="isOpen"
+          class="absolute z-50 mt-2 w-full rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <ul class="py-1 text-sm text-gray-700">
+            <li
+              class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              (click)="selectOption('Latest')"
+            >
+              Latest
+            </li>
+            <li
+              class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              (click)="selectOption('Popular')"
+            >
+              Popular
+            </li>
+            <li
+              class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              (click)="selectOption('Price: Low to High')"
+            >
+              Price: Low to High
+            </li>
+            <li
+              class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              (click)="selectOption('Price: High to Low')"
+            >
+              Price: High to Low
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button
+        class="flex items-center justify-center w-[150px] h-[48px] bg-black rounded-full text-white text-[16px] leading-[22px] font-medium mx-auto text-center"
+      >
+        Write a Review
+      </button>
+    </div>
+  </div>
+  <div class="reviews flex flex-wrap gap-4 relative">
+    <div
+      class="review-card p-4 shadow rounded bg-white w-[calc(50%-0.5rem)] flex items-start flex-col justify-between"
+      *ngFor="let customer of visibleCustomers()"
+    >
+      <div class="flex items-start justify-between mb-2">
+        <div class="flex items-center gap-1 flex-col justify-start">
+          <div class="stars text-yellow-400 text-xl">
+            <ng-container *ngFor="let star of getStars(customer.rate)">
+              <span *ngIf="star">&#9733;</span>
+              <span *ngIf="!star" class="text-gray-300">&#9733;</span>
+            </ng-container>
+          </div>
+          <div class="name flex gap-2 items-center">
+            <h3 class="text-lg font-semibold">{{ customer.name }}</h3>
+            <img src="imgs/icons/right-icon.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-700 text-sm mt-5">"{{ customer.comment }}"</p>
+      <p class="text-gray-700 text-sm mt-5 mb-5">
+        Posted on{{ customer.date }}"
+      </p>
+    </div>
+    <div
+      class="w-full flex justify-center mt-6"
+      *ngIf="visibleCount() < CUSTOMERS().length"
+    >
+      <button
+        class="load-more-btn px-6 py-2 bg-white text-black rounded hover:bg-gray-800 transition"
+        (click)="showMore()"
+      >
+        Load More Reviews
+      </button>
+    </div>
+
+    @if (showErr()) {
+    <div
+      class="text-red-500 err flex items-center justify-center flex-col flex-1"
+    >
+      <img
+        src="imgs/no-comment.png"
+        alt="No comments available"
+        class="mx-auto mb-2"
+      />
+      <p class="text-2xl">No comments available at the moment.</p>
+    </div>
+    }
+    <app-dynamic-proudcts
+      [header]="'You might also like'"
+      [products]="You_might_also_like"
+    />
+  </div>
+</div>

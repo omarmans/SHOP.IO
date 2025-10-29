@@ -1,0 +1,107 @@
+@if (isShown()) {
+<div class="signup bg-[#000000] text-center text-[#FFFFFF] realtive p-2">
+  Sign up and get 20% off to your first order.
+  <a href="#" class="br-bottom">Sign Up Now</a>
+  <span
+    class="absolute right-20 text-xs cursor-pointer lock"
+    (click)="displayNone()"
+    >x</span
+  >
+</div>
+}
+<header class="relative z-10">
+  <div class="container flex gap-5">
+    <img
+      src="imgs/icons/bar-icon.svg"
+      alt=""
+      class="none w-8"
+      (click)="openLinks()"
+    />
+    <nav
+      class="bg-white flex justify-between items-center pt-4 pb-4 flex-1 relative"
+    >
+      <div class="logo font-bold text-4xl cursor-pointer" routerLink="/">
+        SHOP.CO
+      </div>
+      <ul
+        class="links flex justify-between items-center gap-5"
+        [class.show]="showLink()"
+      >
+        <li class="flex flex-col relative">
+          <a href="#" class="flex items-center gap-2" (click)="openMenu()"
+            >Shop
+            <img
+              src="imgs/icons/down-arrow.svg"
+              alt=""
+              class="trs-5"
+              [class.isOpen]="isOpened()"
+              [class.transform]="'transition-transform duration-200'"
+            />
+          </a>
+          @if (isOpened()) {
+          <ul
+            class="bar-menu absolute top-full left-0 mt-2 w-48 bg-[#F0F0F0] shadow-lg rounded-md z-50 p-1"
+          >
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                >New Products</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Log in</a>
+            </li>
+          </ul>
+          <div
+            class="fixed inset-0 z-40 bg-black bg-opacity-0 cursor-default"
+            (click)="openMenu()"
+          ></div>
+          }
+        </li>
+        <li><a href="#">On Sale </a></li>
+        <li><a href="#">New Arrivals </a></li>
+        <li><a href="#">Brands </a></li>
+      </ul>
+      <div class="serch relative w-1/2">
+        <img
+          src="imgs/icons/serch-icon.svg"
+          alt=""
+          alt="Search icon"
+          class="absolute top-3 left-3 w-5 h-5"
+        />
+        <!-- how to add outline -->
+        <!--  focus:outline-none focus:ring-2 focus:ring-[#777] focus:border-transparent" -->
+        <input
+          class="bg-[#F0F0F0] w-full py-3 pl-10 pr-4 rounded-[60px] flex justify-between text-slate-400 trs-5"
+          type="search "
+          name="search"
+          id="search"
+          placeholder="Search for products..."
+        />
+      </div>
+    </nav>
+    <div class="cart flex items-center justify-center gap-2">
+      <img
+        src="imgs/icons/black-serach-icon.svg"
+        alt=""
+        class="none"
+        (click)="openSearch()"
+      />
+      <img
+        src="imgs/icons/cart-icon.svg"
+        alt=""
+        routerLink="cart"
+        class="cursor-pointer"
+      />
+      <img src="imgs/icons/profile-icon.svg" alt="" />
+    </div>
+  </div>
+</header>
+
+<input
+  *ngIf="showSearch()"
+  class="mt-2 bg-[#F0F0F0] w-full py-3 pl-10 pr-4 rounded-[60px] flex justify-between text-slate-400 trs-5 none"
+  type="search "
+  name="search"
+  id="search"
+  placeholder="Search for products..."
+/>

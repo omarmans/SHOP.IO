@@ -1,0 +1,98 @@
+.signup {
+  font-family: "Satoshi Bold", sans-serif !important;
+  font-weight: 400;
+}
+header {
+  nav {
+    background: #ffffff;
+    .logo {
+      font-family: "Integral CF Bold Oblique", sans-serif !important;
+    }
+    .serch {
+      input:focus {
+        outline: 1px solid #777;
+      }
+    }
+  }
+}
+
+.isOpen {
+  transform: rotate(180deg);
+}
+
+.trs-5 {
+  transition: 0.5s;
+}
+
+.none {
+  display: none;
+}
+
+@media (max-width: 1350px) {
+  .container {
+    // flex-direction: column;
+    nav {
+      // flex-direction: column;
+      // justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      .serch {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1037px) {
+  nav {
+    align-items: center;
+  }
+  .lock {
+    display: none;
+  }
+  .none {
+    display: block !important;
+  }
+  .container {
+    flex-direction: row;
+    align-items: center;
+
+    nav {
+      flex-direction: row;
+
+      .links {
+        display: none;
+        // opacity: 0;
+        text-align: center;
+        flex-direction: column;
+        position: absolute;
+        top: 55px;
+        right: 56%;
+        background-color: #ffffff;
+        width: 60%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        z-index: 100;
+      }
+      .links.show {
+        display: flex; // لما تضاف الكلاس show تظهر القائمة
+      }
+
+      .serch {
+        display: none;
+
+        img {
+          top: 0;
+          right: 0;
+          width: 50px;
+        }
+
+        input {
+          display: none;
+        }
+      }
+    }
+  }
+}

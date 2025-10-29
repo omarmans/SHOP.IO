@@ -1,0 +1,30 @@
+<div class="Pagination mt-5">
+  <button (click)="prevPage()" [disabled]="currentPage === 1" class="for-back">
+    <img src="imgs/icons/back.png" alt="" class="w-[10px]" />
+    Previous
+  </button>
+
+  <ng-container class="ng-cont">
+    @for (page of totalPages; track page) {
+    <button
+      (click)="goToPage(page)"
+      [ngClass]="{
+        active: page === currentPage,
+        inactive: page !== currentPage
+      }"
+      class="w-fit p-2 rounded"
+    >
+      {{ page }}
+    </button>
+    }
+  </ng-container>
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages.length"
+    class="for-back"
+  >
+    Next
+    <img src="imgs/icons/forward.png" alt="" class="w-[10px]" />
+  </button>
+</div>

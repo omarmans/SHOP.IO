@@ -1,0 +1,49 @@
+.container {
+  h1 {
+    font-family: "Integral CF Bold Oblique", sans-serif !important;
+  }
+  .product {
+    transition: 0.5s;
+    &:hover {
+      transform: translateY(-5px);
+    }
+    .pro-name {
+      // font-family: "Satoshi", sans-serif !important;
+      font-weight: 500 !important;
+    }
+  }
+
+  .br {
+    border: 1px solid #eee;
+    border-radius: 34px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px 80px;
+    transition: 0.5s;
+    &:hover {
+      background-color: #000000;
+      color: white;
+    }
+  }
+}
+.rad {
+  border-radius: 50px;
+}
+
+@media (max-width: 1280px) {
+  .container {
+    .products {
+      gap: 20px;
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    .products {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
