@@ -18,10 +18,10 @@
       </button>
       <div class="stats flex mt-4 mb-4 items-center justify-center">
         @for (stat of stats; track stat.name) {
-        <div class="stat flex flex-col">
-          <h2 class="font-bold mb-2">{{ stat.value }}+</h2>
-          <p class="text-[#00000099] opacity-60">{{ stat.name }}</p>
-        </div>
+          <div class="stat flex flex-col">
+            <h2 class="font-bold mb-2">{{ stat.value }}+</h2>
+            <p class="text-[#00000099] opacity-60">{{ stat.name }}</p>
+          </div>
         }
       </div>
     </div>
@@ -33,7 +33,7 @@
         alt=""
         class="absolute top-[50%] left-[70px] small"
       />
-      <img src="imgs/landing/landing2.jpg" alt="" class="text-center" />
+      <img src="imgs/landing/mainn.png" alt="" class="text-center" />
       <img
         src="imgs/landing/big.svg"
         alt=""
@@ -45,10 +45,10 @@
 
 <div class="brands z-20 flex bg-black items-center p-8 justify-around relative">
   @for (brand of brands; track brand.name) {
-  <div class="brand">
-    <a href="{{ brand.link }}" target="_blank" [name]="brand.name">
-      <img src="imgs/brands/{{ brand.logo }}" alt="" srcset="" />
-    </a>
-  </div>
+    <div class="brand">
+      <a href="{{ brand.link }}" target="_blank" [name]="brand.name">
+        <img src="imgs/brands/{{ brand.logo }}" alt="" srcset="" />
+      </a>
+    </div>
   }
 </div>

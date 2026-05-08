@@ -1,0 +1,128 @@
+<section class="store-locator">
+  <div class="locator-wrapper">
+    <!-- ===== LEFT SIDEBAR ===== -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">فروعنا</h2>
+
+      <div class="search-bar">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (input)="filterStores()"
+          placeholder="ابحث بالمنطقة أو العنوان..."
+          class="search-input"
+        />
+        <button class="search-btn" (click)="filterStores()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </div>
+
+      <button class="location-btn" (click)="useMyLocation()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="2" x2="12" y2="4" />
+          <line x1="12" y1="20" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="4" y2="12" />
+          <line x1="20" y1="12" x2="22" y2="12" />
+          <circle cx="12" cy="12" r="1" fill="currentColor" />
+        </svg>
+        استخدم موقعي الحالي
+      </button>
+
+      <ul class="store-list">
+        <li
+          *ngFor="let store of filteredStores"
+          class="store-card"
+          [class.active]="selectedStore?.id === store.id"
+          (click)="selectStore(store)"
+        >
+          <div class="store-pin">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75
+                       7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38
+                       0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5
+                       2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              />
+            </svg>
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">{{ store.name }}</h3>
+            <p class="store-address">{{ store.address }}</p>
+            <a
+              *ngIf="store.phone"
+              [href]="'tel:' + store.phone"
+              class="store-link"
+              (click)="$event.stopPropagation()"
+              >{{ store.phone }}</a
+            >
+            <a
+              [href]="'https://' + store.website"
+              target="_blank"
+              class="store-link"
+              (click)="$event.stopPropagation()"
+              >{{ store.website }}</a
+            >
+            <span class="store-gov">Government: {{ store.government }}</span>
+          </div>
+        </li>
+
+        <li *ngIf="filteredStores.length === 0" class="no-results">
+          لا توجد نتائج مطابقة
+        </li>
+      </ul>
+    </aside>
+
+    <!-- ===== MAP ===== -->
+    <div class="map-container">
+      <!-- The Leaflet map renders here -->
+      <div id="storeMap" class="map"></div>
+
+      <!-- Floating info card when a store is selected -->
+      <div class="map-popup" *ngIf="selectedStore">
+        <button class="popup-close" (click)="closePopup()">×</button>
+        <h4 class="popup-name">{{ selectedStore.name }}</h4>
+        <p class="popup-address">{{ selectedStore.address }}</p>
+        <a
+          [href]="'https://' + selectedStore.website"
+          target="_blank"
+          class="popup-link"
+          >{{ selectedStore.website }}</a
+        >
+        <p class="popup-gov">Government: {{ selectedStore.government }}</p>
+        <button class="directions-btn" (click)="openDirections(selectedStore)">
+          Directions
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,13 +1,13 @@
 @if (isShown()) {
-<div class="signup bg-[#000000] text-center text-[#FFFFFF] realtive p-2">
-  Sign up and get 20% off to your first order.
-  <a href="#" class="br-bottom">Sign Up Now</a>
-  <span
-    class="absolute right-20 text-xs cursor-pointer lock"
-    (click)="displayNone()"
-    >x</span
-  >
-</div>
+  <div class="signup bg-[#000000] text-center text-[#FFFFFF] realtive p-2">
+    Sign up and get 20% off to your first order.
+    <a routerLink="/" class="br-bottom">Sign Up Now</a>
+    <span
+      class="absolute right-20 text-xs cursor-pointer lock"
+      (click)="displayNone()"
+      >x</span
+    >
+  </div>
 }
 <header class="relative z-10">
   <div class="container flex gap-5">
@@ -28,7 +28,7 @@
         [class.show]="showLink()"
       >
         <li class="flex flex-col relative">
-          <a href="#" class="flex items-center gap-2" (click)="openMenu()"
+          <a routerLink="/" class="flex items-center gap-2" (click)="openMenu()"
             >Shop
             <img
               src="imgs/icons/down-arrow.svg"
@@ -39,27 +39,30 @@
             />
           </a>
           @if (isOpened()) {
-          <ul
-            class="bar-menu absolute top-full left-0 mt-2 w-48 bg-[#F0F0F0] shadow-lg rounded-md z-50 p-1"
-          >
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                >New Products</a
-              >
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Log in</a>
-            </li>
-          </ul>
-          <div
-            class="fixed inset-0 z-40 bg-black bg-opacity-0 cursor-default"
-            (click)="openMenu()"
-          ></div>
+            <ul
+              class="bar-menu absolute top-full left-0 mt-2 w-48 bg-[#F0F0F0] shadow-lg rounded-md z-50 p-1"
+            >
+              <li>
+                <a routerLink="/" class="block px-4 py-2 hover:bg-gray-100"
+                  >New Products</a
+                >
+              </li>
+              <li>
+                <a routerLink="/" class="block px-4 py-2 hover:bg-gray-100"
+                  >Log in</a
+                >
+              </li>
+            </ul>
+            <div
+              class="fixed inset-0 z-40 bg-black bg-opacity-0 cursor-default"
+              (click)="openMenu()"
+            ></div>
           }
         </li>
-        <li><a href="#">On Sale </a></li>
-        <li><a href="#">New Arrivals </a></li>
-        <li><a href="#">Brands </a></li>
+        <li><a routerLink="/">On Sale </a></li>
+        <li><a routerLink="/">New Arrivals </a></li>
+        <li><a routerLink="/">Brands </a></li>
+        <li><a routerLink="/our-stores">Our-Stores </a></li>
       </ul>
       <div class="serch relative w-1/2">
         <img

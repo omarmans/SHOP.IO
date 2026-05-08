@@ -3,6 +3,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RatingAndReviewsComponent } from './pages/product-detail-page/rating-and-reviews/rating-and-reviews.component';
 import { FAQsComponent } from './pages/product-detail-page/faqs/faqs.component';
 import { DetailsComponent } from './pages/product-detail-page/details/details.component';
+import { OurStoresComponent } from './pages/our-stores/our-stores.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent, title: 'Home' },
@@ -12,7 +13,7 @@ export const routes: Routes = [
 
     loadComponent: () =>
       import('./pages/product-detail-page/product-detail-page.component').then(
-        (x) => x.ProductDetailPageComponent
+        (x) => x.ProductDetailPageComponent,
       ),
     children: [
       { path: '', redirectTo: 'review', pathMatch: 'full' },
@@ -25,7 +26,7 @@ export const routes: Routes = [
     path: 'products',
     loadComponent: () =>
       import('./pages/proudcts/proudcts.component').then(
-        (x) => x.ProudctsComponent
+        (x) => x.ProudctsComponent,
       ),
     title: 'Products',
   },
@@ -35,4 +36,5 @@ export const routes: Routes = [
       import('./pages/cart/cart.component').then((x) => x.CartComponent),
     title: 'Cart',
   },
+  { path: 'our-stores', component: OurStoresComponent },
 ];
