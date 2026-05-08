@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { CarouselModule, CarouselComponent } from 'ngx-owl-carousel-o';
-import { debounceTime } from 'rxjs';
+import { debounceTime, delay } from 'rxjs';
 import { CommentsService } from '../../../services/comments.service';
 import { Comment } from '../../../shared/models/comment.interface';
 
@@ -18,16 +18,18 @@ export class CustomersComponent implements OnInit {
   }
   CUSTOMERS = signal<Comment[]>([]);
   getComments() {
-    this.commentSerive.getComments();
-    this.commentSerive.comments$.subscribe(
-      (res: Comment[]) => {
-        this.CUSTOMERS.set(res);
-        // console.log('res', res);
-      },
-      (err) => {
-        console.log('no data');
-      }
-    );
+    this.commentSerive
+      .getComments()
+
+      .subscribe({
+        next: (res: Comment[]) => {
+          this.CUSTOMERS.set(res);
+          this.commentSerive.setComments(res);
+        },
+        error: (err) => {
+          console.error('Error loading comments:', err);
+        },
+      });
   }
   @ViewChild('owlCar', { static: false }) owlCar!: CarouselComponent;
 
